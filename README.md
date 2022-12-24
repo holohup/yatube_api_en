@@ -1,39 +1,42 @@
 
-# Добро пожаловать в проект api_yatube!
+## Yatube API Educational Project
+### You kiddin' me? Another educational project?
 
-Подключите проект к фронтэнду проекта yatube, чтобы он мог работать с первой версией api. Это даст возможность оперативно взаимодействовать с базой как прямо с SPA, так и с мобильной версии приложения, или из удобного **PostMan**.
+Exactly! An implementation of REST Api for a sample Django project using DRF. The task was to to create an API based on redoc-based documentation from scratch: models, request routing, serialization, permissions, JWT, and so on.
 
-## Сразу к делу:
+After installation, you'll be able to read the docs and test the project, using built-in web interface, or some kind of software (I would recommend **PostMan**)
 
-1) После клонирования репозитария перейдите в папку, создайте виртуальное окружение, установите зависимости, выполните миграции и вперед, к **новым высотам** через запуск проекта:
+### Installation
 
-### Запускаем на раз-два-три:
-
-#### Скопируйте эту строку в свой терминал
 ```
-git clone https://github.com/holohup/api_final_yatube.git && cd api_final_yatube && ./yatube_api_install.sh
+https://github.com/holohup/yatube_api_en && cd yatube_api_en && ./yatube_api_install.sh
 ```
 
-## Принцип работы
+### The Ultimate Task (how the project should work and how it does, on yes)
+
+Check out this link to learn which requests it should accept, which responses it returns and all the necessary details:
+http://127.0.0.1:8000/redoc/#tag/api
+
+### How it works
  У нея внутре неонка!
 ```mermaid
 
 sequenceDiagram
-Пользователь ->> Api: Удали, пожалуйста, мой пост
-Api ->> Сервер: Нужно срочно удалить пост!
-Сервер ->> БД: Живо удали!
-БД ->> Сервер: Да я уже...
-Сервер ->> Api: Пост удален, чего еще изволите?
-Api ->> Пользователь: С удовольствем! Уже удалено. Вот Вам 204.
+User ->> API: Would you please delete this post?
+API ->> Server: Post deletion service needed immediately!
+Server ->> Database: Delete the post ASAP! Code red!
+Database ->> Server: Fixed :-Q
+Server ->> API: The post has been deleted, what's next?
+API ->> User: The problem has been solved, oh mighty one! Please take this 204 status code.
 ```
 
-### Примеры запросов и ответов
+### Request examples
 
-- получение комментария к посту
+- get post comments
 
 > /api/v1/posts/{post_id}/comments/{id}/
 
-Ответ:
+Response:
 ```
 {
 -   "id": 0,   
@@ -44,7 +47,4 @@ Api ->> Пользователь: С удовольствем! Уже удале
 }
 ```
 
-## Все эндпоинты, ошибки (hopefully) и ответы проекта доступны в виде yaml-файла
-
-...после установки будут доступны на локальном веб-сервере по адресу: 
-> http://127.0.0.1:8000/redoc/#tag/api
+Feel free to send all allowed kinds on requests and test my solution back and forth!
