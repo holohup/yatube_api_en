@@ -11,7 +11,7 @@ class CommentSerializer(serializers.ModelSerializer):
     author = serializers.SlugRelatedField(
         default=serializers.CurrentUserDefault(),
         slug_field='username',
-        read_only=True
+        read_only=True,
     )
 
     class Meta:
@@ -29,23 +29,17 @@ class CommentSerializer(serializers.ModelSerializer):
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
-        fields = (
-            'id',
-            'title',
-            'slug',
-            'description'
-        )
+        fields = ('id', 'title', 'slug', 'description')
 
 
 class FollowSerializer(serializers.ModelSerializer):
     user = serializers.SlugRelatedField(
         default=serializers.CurrentUserDefault(),
         slug_field='username',
-        read_only=True
+        read_only=True,
     )
     following = serializers.SlugRelatedField(
-        slug_field='username',
-        queryset=User.objects.all()
+        slug_field='username', queryset=User.objects.all()
     )
 
     class Meta:
@@ -58,13 +52,15 @@ class FollowSerializer(serializers.ModelSerializer):
             serializers.UniqueTogetherValidator(
                 queryset=Follow.objects.all(),
                 fields=['user', 'following'],
-                message='Подписаться можно только один раз!'
+                message='You can only subscribe once!',
             )
         ]
 
     def validate_following(self, value):
         if self.context['request'].user == value:
-            raise serializers.ValidationError('Самоподписки запрещены!')
+            raise serializers.ValidationError(
+                'Self subscription is not allowed!'
+            )
         return value
 
 
@@ -75,9 +71,7 @@ class Base64ImageField(serializers.ImageField):
             ext = format.split('/')[-1]
             data = ContentFile(
                 base64.b64decode(imgstr),
-                name=str(
-                    datetime.datetime.now().timestamp()
-                ) + '.' + ext
+                name=str(datetime.datetime.now().timestamp()) + '.' + ext,
             )
         return super().to_internal_value(data)
 
@@ -86,7 +80,7 @@ class PostSerializer(serializers.ModelSerializer):
     author = serializers.SlugRelatedField(
         default=serializers.CurrentUserDefault(),
         slug_field='username',
-        read_only=True
+        read_only=True,
     )
     image = Base64ImageField(required=False, allow_null=True)
 

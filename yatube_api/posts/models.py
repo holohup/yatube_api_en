@@ -14,14 +14,14 @@ class Group(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Группа'
-        verbose_name_plural = 'Группы'
+        verbose_name = 'Group'
+        verbose_name_plural = 'Groups'
 
 
 class Post(models.Model):
-    text = models.TextField('Текст поста')
+    text = models.TextField('Post text')
     pub_date = models.DateTimeField(
-        'Дата публикации',
+        'Publication date',
         auto_now_add=True,
         db_index=True
     )
@@ -29,18 +29,18 @@ class Post(models.Model):
         User,
         on_delete=models.CASCADE,
         related_name='posts',
-        verbose_name='Автор'
+        verbose_name='Author'
     )
     image = models.ImageField(
-        'Картинка', upload_to='posts/', null=True, blank=True)
+        'Image', upload_to='posts/', null=True, blank=True)
     group = models.ForeignKey(
         Group,
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
         related_name='posts',
-        verbose_name='Группа',
-        help_text='Группа, к которой будет относиться пост',
+        verbose_name='Group',
+        help_text='Group for the post',
     )
 
     def __str__(self):
@@ -54,7 +54,7 @@ class Comment(models.Model):
         Post, on_delete=models.CASCADE, related_name='comments')
     text = models.TextField()
     created = models.DateTimeField(
-        'Дата добавления', auto_now_add=True, db_index=True)
+        'Date added', auto_now_add=True, db_index=True)
 
     class Meta:
         ordering = ['-created']
@@ -65,23 +65,23 @@ class Follow(models.Model):
         User,
         on_delete=models.CASCADE,
         related_name='follower',
-        verbose_name='Подписчик'
+        verbose_name='Follower'
     )
     following = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name='following',
-        verbose_name='Автор блога'
+        verbose_name='Blog author'
     )
 
     def __str__(self):
-        return f'Подписка {self.user} на {self.following}'
+        return f'{self.user} subscription on {self.following}'
 
     class Meta:
-        verbose_name = 'Подписка'
-        verbose_name_plural = 'Подписки'
+        verbose_name = 'Subscription'
+        verbose_name_plural = 'Subscriptions'
         constraints = [
             models.UniqueConstraint(
-                fields=['following', 'user'], name='Уникальная подписка'
+                fields=['following', 'user'], name='Unique subscription'
             ),
         ]
