@@ -16,7 +16,7 @@ After installation, you'll be able to read the docs and test the project, using 
 ### Installation
 
 ```
-https://github.com/holohup/yatube_api_en && cd yatube_api_en && ./yatube_api_install.sh
+git clone https://github.com/holohup/yatube_api_en && cd yatube_api_en && ./yatube_api_install.sh
 ```
 
 ### The Ultimate Task (how the project should work and how it does, on yes)
@@ -25,7 +25,7 @@ Check out this link to learn which requests it should accept, which responses it
 http://127.0.0.1:8000/redoc/#tag/api
 
 ### How it works
- У нея внутре неонка!
+
 ```mermaid
 
 sequenceDiagram
