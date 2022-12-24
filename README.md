@@ -19,6 +19,19 @@ After installation, you'll be able to read the docs and test the project, using 
 git clone https://github.com/holohup/yatube_api_en && cd yatube_api_en && ./yatube_api_install.sh
 ```
 
+The projects comes preloaded with some fixtures which are installed on the script execution. There's a registered admin user **tester/tester**, the admin web-interface is accessible at http://127.0.0.1:8000/admin/
+
+You can register a new user from there, or use the admin creditentials to get a token by sending a POST request to http://127.0.0.1:8000/api/v1/jwt/create/ containing a json:
+
+```
+{
+    "username": "string",
+    "password": "string"
+}
+```
+
+The JWT-token will be under the key named "**access**". After that, set up your software to use it and explore the API at your will!
+
 ### The Ultimate Task (how the project should work and how it does, on yes)
 
 Check out this link to learn which requests it should accept, which responses it returns and all the necessary details:
