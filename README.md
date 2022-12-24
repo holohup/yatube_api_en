@@ -6,6 +6,13 @@ Exactly! An implementation of REST Api for a sample Django project using DRF. Th
 
 After installation, you'll be able to read the docs and test the project, using built-in web interface, or some kind of software (I would recommend **PostMan**)
 
+#### Keypoints
+
+- This implementation is built on viewsets.
+- JWT-tokens used for authentication.
+- Read-only access for unauthenticated users to all endpoints except for _/follow/_.
+- Authenticated users are allowed to modify/delete their own content, read-only access in all other cases.
+
 ### Installation
 
 ```
@@ -27,7 +34,7 @@ API ->> Server: Post deletion service needed immediately!
 Server ->> Database: Delete the post ASAP! Code red!
 Database ->> Server: Fixed :-Q
 Server ->> API: The post has been deleted, what's next?
-API ->> User: The problem has been solved, oh mighty one! Please take this 204 status code.
+API ->> User: Oh mighty one! It's done, please accept this 204 status code.
 ```
 
 ### Request examples
