@@ -8,7 +8,7 @@ After installation, you'll be able to read the docs and test the project, using 
 
 #### Technology stack
 
-- Python 3.7.13, Django 2.2.16, Django REST Framework 3.12.4, SimpleJWT 4.7.2, PyJWT 2.1.0, Djoser 2.1.0, Pillow 9.2.0
+- Python 3.7.13, Django 2.2.16, Django REST Framework 3.12.4, SimpleJWT 4.7.2, PyJWT 2.1.0, Djoser 2.1.0, Pillow 9.2.0, drf-yasg 1.21.4
 
 #### Key points
 
@@ -36,10 +36,15 @@ You can register a new user from there, or use the admin credentials to get a to
 
 The JWT token will be under the key named "**access**". After that, set up your software to use it and explore the API at your will!
 
-### The Ultimate Task (how the project should work and how it does, on yes)
+### Every single Endpoint (how the project should work and how it does, on yes)
 
-Check out this link to learn which requests it should accept, which responses it returns, and all the necessary details:
-http://127.0.0.1:8000/redoc/#tag/api
+Choose a link to learn which requests it should accept, which responses it returns, and all the necessary details in a preferred format:
+
+- A JSON view: http://127.0.0.1:8000/swagger.json
+- A YAML view: http://127.0.0.1:8000/swagger.yaml
+- A swagger-ui view: http://127.0.0.1:8000/swagger/
+- A ReDoc view: http://127.0.0.1:8000/redoc/
+
 
 ### How it works
 
