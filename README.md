@@ -1,21 +1,21 @@
 
 ## Yatube API Educational Project
-### You kiddin' me? Another educational project?
+### Are you kiddin' me? Another educational project?
 
 Exactly! Implementation of REST API for a sample Django project using DRF. The task was to create an API based on redoc-based documentation from scratch: models, request routing, serialization, permissions, JWT, and so on.
 
-After installation, you'll be able to read the docs and test the project, using a built in web interface, or some kind of software (I would recommend **PostMan**)
+After installation, you'll be able to read the docs and test the project, using a built-in web interface, or some kind of software (I would recommend **PostMan**)
 
 #### Technology stack
 
 - Python 3.7.13, Django 2.2.16, Django REST Framework 3.12.4, SimpleJWT 4.7.2, PyJWT 2.1.0, Djoser 2.1.0, Pillow 9.2.0
 
-#### Keypoints
+#### Key points
 
 - This implementation is built on viewsets.
-- JWT tokens used for authentication.
+- JWT tokens are used for authentication.
 - Read-only access for unauthenticated users to all endpoints except for _/follow/_.
-- Authenticated users are allowed to modify/delete their content, read-only access in all other cases.
+- Authenticated users are allowed to modify/delete their content, and read-only access in all other cases.
 
 ### Installation
 
@@ -38,7 +38,7 @@ The JWT token will be under the key named "**access**". After that, set up your 
 
 ### The Ultimate Task (how the project should work and how it does, on yes)
 
-Check out this link to learn which requests it should accept, which responses it returns all the necessary details:
+Check out this link to learn which requests it should accept, which responses it returns, and all the necessary details:
 http://127.0.0.1:8000/redoc/#tag/api
 
 ### How it works
