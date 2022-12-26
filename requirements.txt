@@ -5,3 +5,4 @@ Pillow==9.2.0
 PyJWT==2.1.0
 requests==2.26.0
 djoser==2.1.0
+drf_yasg-1.21.4
