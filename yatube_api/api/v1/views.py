@@ -8,6 +8,8 @@ from posts.models import Group, Post
 from .serializers import CommentSerializer, GroupSerializer, PostSerializer
 from .serializers import FollowSerializer
 
+from posts.models import Comment
+
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.select_related('author').order_by('pub_date')
@@ -30,6 +32,8 @@ class CommentViewSet(viewsets.ModelViewSet):
         )
 
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return Comment.objects.none()
         post = get_object_or_404(Post, id=self.kwargs['post_id'])
         return post.comments.select_related('author')
 
